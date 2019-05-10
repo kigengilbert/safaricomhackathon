@@ -62,7 +62,7 @@ app.post('/provisionSIM',function(req,res){
           
    
     
-    res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
+   
 })
       
 app.post('/activateSIM',function(req,res){
