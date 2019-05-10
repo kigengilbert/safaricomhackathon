@@ -69,7 +69,7 @@ app.post('/activateSIM',function(req,res){
              });
              
       */
-    var sql="SELECT * FROM simdb WHERE (ICCID ="+ req.body.ICCID+ "AND IMSI ="+req.body.IMSI
+    var sql="SELECT * FROM simdb WHERE (ICCID ="+ req.body.ICCID+ " AND IMSI ="+req.body.IMSI
 
        console.log("IMSI: " +req.body.IMSI)
         console.log("ICCID: " +req.body.ICCID)
