@@ -7,7 +7,7 @@ const router = express.Router();
 // @desc    render page
 // @access  Public
 router.post("/", (req, res) => {
-    res.sendFile('public/provision.html');
+    res.sendFile('./public/provision.html');
 });
 
 // @route   GET api/climate/all
