@@ -1,13 +1,12 @@
-const express = require("express");
+const express = require("./node_modules/express");
 const router = express.Router();
-
-
 
 // @route   POST api/provision
 // @desc    render page
 // @access  Public
 router.post("/", (req, res) => {
-    res.sendFile('./public/provision.html');
+    res.sendFile('provision.html');
+   
 });
 
 // @route   GET api/climate/all
