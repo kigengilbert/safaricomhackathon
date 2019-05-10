@@ -26,7 +26,7 @@ function run() {
         }
         console.log('Connected to database');
     });
-    global.db = db;
+   
    
      // setup directory for static files (html, css, etc.)
      app.use(express.static('public'));
@@ -40,10 +40,10 @@ app.post('/provision',function(req,res){
     
     let sql = "INSERT INTO 'simdb' ('ICCID', 'IMSI', 'Ki', 'PIN1', 'PUC', 'status') VALUES ('1234567', '1234567', 'ssds', '1245', '144556', '1')"
     console.log("IMSI: " +req.body.IMSI)
-    db.query(sql, (err, result) => {
+    /*db.query(sql, (err, result) => {
         if (err) {
             return res.status(500).send(err);
-        }})
+        }})*/
     res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
 })
       
