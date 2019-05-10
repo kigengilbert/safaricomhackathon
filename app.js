@@ -19,6 +19,11 @@ function run() {
         password: '2YCGQhR4V9dfZ4L',
         database: 'safaricomhack'
     });
+    db.connect((err) => {
+        if (err) {
+
+            throw err;
+        }
      // setup directory for static files (html, css, etc.)
      app.use(express.static('public'));
 
@@ -38,17 +43,13 @@ app.post('/provision',function(req,res){
     console.log("PUC: " +req.body.PUC)
     console.log("status: " +req.body.Status)
     
-    db.connect((err) => {
-        if (err) {
-
-            throw err;
-        }
+    
         console.log('Connected to database');
         db.query(sql, function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");
           });
-          db.end()
+          
     });
     
     res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
