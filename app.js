@@ -36,7 +36,7 @@ app.post('/provision',function(req,res){
     console.log("Ki: " +req.body.Ki)
     console.log("PIN1: " +req.body.PIN1)
     console.log("PUC: " +req.body.PUC)
-    console.log("status: " +req.body.status)
+    console.log("status: " +req.body.Status)
     
     db.connect((err) => {
         if (err) {

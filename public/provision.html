@@ -61,7 +61,7 @@
                  </div>
                  <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Status</label>
-                     <input type="text" id="Status"  class="form-control" type="number" id="formGroupExampleInput" placeholder=" 1 or 0" required >
+                     <input type="text" id="st"  class="form-control" type="number" id="formGroupExampleInput" placeholder=" 1 or 0" required >
                  </div>
               </form>
           </div>
@@ -111,7 +111,7 @@
     .then(response => response.json()); // parses JSON response into native Javascript objects 
 }
   $( "#create" ).click(function() {
-    postData("https://safaricomhack.herokuapp.com/provision", {message: 42 ,ICCID:$("#ICCID").val(),IMSI:$("#IMSI").val(),Ki:$("#Ki").val(),PIN1:$("#PIN1").val(),PUC:$("#PUC").val(),Status:$("#Status").val()})
+    postData("https://safaricomhack.herokuapp.com/provision", {ICCID:$("#ICCID").val(),IMSI:$("#IMSI").val(),Ki:$("#Ki").val(),PIN1:$("#PIN1").val(),PUC:$("#PUC").val(),Status:$("#st").val()})
   .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
   .catch(error => console.error(error));
   alert($("#IMSI").val())
