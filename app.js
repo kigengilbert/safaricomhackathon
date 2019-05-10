@@ -110,6 +110,34 @@ app.post('/activateSIM',function(req,res){
        
    })
 
-   
-    app.listen(server_port, () => console.log('Example app listening !'))
+   app.post('/adjustAccountBalance',function(req,res){
+  
+    var resultcode=0;
+    var sql="SELECT * FROM simdb WHERE (MSISDN ="+ req.body.MSISDN + ")"
+
+     
+       db.query(sql, function (err, result) {
+           if (err) throw err;
+           if(result.length==1){
+               console.log(result[0].balance)
+               if(result[0].balance==0){
+                   var sql2 = "UPDATE simdb SET balance ="+req.body.Amount+"  WHERE MSISDN =" +req.body.MSISDN;
+                  
+                   db.query(sql2, function (err, result) {
+                       if (err) throw err;
+                       console.log("DONE");
+                       resultcode=0;
+                       res.json({ response_code: 0  });
+                     });
+               }else{
+                   res.json({ response_code: 2  });
+                   
+               }
+           
+           }else{
+               res.json({ response_code: 0   });
+           }
+         });
+   })
+    app.listen(server_port, () => console.log('API listening !'))
 }
