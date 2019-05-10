@@ -31,7 +31,7 @@ function run() {
      app.get('/', function (req, res) {
          res.sendFile('/public/index.html');
      });
-     
+     //end point for provisioning sim
 app.post('/provisionSIM',function(req,res){
     
     var sql3="SELECT * FROM simdb WHERE (ICCID ="+ req.body.ICCID +")"
@@ -85,6 +85,27 @@ app.post('/activateSIM',function(req,res){
                       });
                 }else{
                     res.json({ response_code: 2  });
+                }
+            
+            }else{
+                res.json({ response_code: 0   });
+            }
+          });
+       
+   })
+   app.post('/querySubscriberInfo',function(req,res){
+    var resultcode=0;
+     var sql="SELECT * FROM simdb WHERE (MSISDN ="+ req.body.MSISD + ")"
+
+       
+        db.query(sql, function (err, result) {
+            if (err) throw err;
+            if(result.length==1){
+                console.log(result[0].status)
+                if(result[0].status==0){
+                    res.json({error: "no siom found"});
+                }else{
+                    res.json(result);
                 }
             
             }else{

@@ -74,7 +74,7 @@
               </form>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Create</a>
+            <a href="#" id= "chekbal" class="btn btn-primary">Query</a>
           </div>
         </div>
       </div>
@@ -118,8 +118,8 @@
           })
           .then(response => response.json()); // parses JSON response into native Javascript objects 
       }
-        $( "#activate" ).click(function() {
-          postData("https://safaricomhack.herokuapp.com/activateSIM", {MSISDN:$("#MSISDN").val(),ICCID:$("#ICCID").val(),IMSI:$("#IMSI").val()})
+        $( "#checkbal" ).click(function() {
+          postData("https://safaricomhack.herokuapp.com/querySubscriberInfo", {MSISDN:$("#MSISDN").val()})
         .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
         .catch(error => console.error(error));
         alert($("#IMSI").val())
