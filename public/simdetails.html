@@ -13,17 +13,6 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   
-
-
-  <!-- Custom styles for this template -->
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/kigengilbert/safaricomhackathon/master/heroic-features.css">
-
-</head>
-
-<body>
-
-
-
   <!-- Page Content -->
   <div class="container">
 
@@ -58,13 +47,13 @@
                                         </thead>
                                         <tbody>
                                           <tr>
-                                            <th scope="row">1</th>
-                                            <td id="ICCID">ICCID</td>
-                                            <td id="IMSI">Otto</td>
-                                            <td id="Ki"  >@mdo</td>
-                                            <td id="PIN1" >Mark</td>
-                                            <td id="PUC">Otto</td>
-                                            <td id="status">@mdo</td>
+                                            <th scope="row"></th>
+                                            <td id="ICCID"></td>
+                                            <td id="IMSI"></td>
+                                            <td id="Ki"  ></td>
+                                            <td id="PIN1" ></td>
+                                            <td id="PUC"></td>
+                                            <td id="status"></td>
                                           </tr>
                                         >
                                         </tbody>
@@ -120,10 +109,22 @@
       }
         $( "#Check" ).click(function() {
           postData("https://safaricomhack.herokuapp.com/querySubscriberInfo", {MSISDN:$("#MSISDN").val()})
-        .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+        .then(
+            data =>  printout(data)   ) // JSON-string from `response.json()` call
         .catch(error => console.error(error));
         alert($("#IMSI").val()) 
         });
+
+        function printout(response) {
+                
+                 $('#IMSI').html(response[0].IMSI);         
+                  $('#ICCID').html(response[0].ICCID);
+                 $('#Ki').html(response[0].Ki);      
+                 $('#PIN1').html(response[0].PIN1);
+                 $('#PUC').html(response[0].PUC);
+                 
+                 $('#status').html(response[0].status);
+    }
         
       </script>
 </body>

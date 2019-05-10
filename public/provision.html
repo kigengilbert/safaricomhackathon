@@ -66,7 +66,7 @@
               </form>
           </div>
           <div class="card-footer">
-            <a href="#" id= "create" class="btn btn-primary">Create</a>
+            <a href="#" id="create" class="btn btn-primary">Create</a>
           </div>
         </div>
       </div>
@@ -112,10 +112,14 @@
 }
   $( "#create" ).click(function() {
     postData("https://safaricomhack.herokuapp.com/provisionSIM", {ICCID:$("#ICCID").val(),IMSI:$("#IMSI").val(),Ki:$("#Ki").val(),PIN1:$("#PIN1").val(),PUC:$("#PUC").val(),Status:$("#st").val()})
-  .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+  .then(data => printout(data)) // JSON-string from `response.json()` call
   .catch(error => console.error(error));
   alert($("#IMSI").val())
   });
+  function printout(response) {
+                
+               alert(response.response_code);
+   }
 </script>
 </body>
 

@@ -95,7 +95,7 @@ app.post('/activateSIM',function(req,res){
    })
    app.post('/querySubscriberInfo',function(req,res){
     var resultcode=0;
-     var sql="SELECT * FROM simdb WHERE (MSISDN ="+ req.body.MSISDN + ")"
+     var sql="SELECT * FROM simdb WHERE (MSISDN ="+ req.body.MSISD + ")"
 
        
         db.query(sql, function (err, result) {
@@ -103,7 +103,7 @@ app.post('/activateSIM',function(req,res){
             if(result.length==1){
                 console.log(result[0].status)
                 if(result[0].status==0){
-                    res.json({error: "no siom found"});
+                      res.json(result);
                 }else{
                     res.json(result);
                 }
