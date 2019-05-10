@@ -81,7 +81,7 @@ app.post('/activateSIM',function(req,res){
                 resultcode=1;
             }
           });
-       res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
+       res.json({ response_code: resultcode  });
    })
 
    
