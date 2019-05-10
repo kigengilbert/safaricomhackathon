@@ -75,7 +75,7 @@ app.post('/activateSIM',function(req,res){
         console.log("ICCID: " +req.body.ICCID)
         db.query(sql, function (err, result) {
             if (err) throw err;
-            if(result.length=1){
+            if(result.length==1){
                 console.log("found")
             }
           });
