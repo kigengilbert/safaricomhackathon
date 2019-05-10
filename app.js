@@ -72,16 +72,17 @@ app.post('/activateSIM',function(req,res){
                         if (err) throw err;
                         console.log("DONE");
                         resultcode=0;
+                        res.json({ response_code: 0  });
                       });
                 }else{
-                    resultcode=2;
+                    res.json({ response_code: 2  });
                 }
             
             }else{
-                resultcode=1;
+                res.json({ response_code: 0  });
             }
           });
-       res.json({ response_code: resultcode  });
+       
    })
 
    
