@@ -67,7 +67,8 @@ app.post('/activateSIM',function(req,res){
             if(result.length==1){
                 console.log(result[0].status)
                 if(result[0].status==0){
-                    var sql2 = "INSERT INTO simdb (status,MSISDN) VALUES ("+ req.body.MSISDN +",1)"
+                    var sql2 = "UPDATE simdb SET MSISDN ="+req.body.MSISDN+",status = 1  WHERE IMSI =" +req.body.IMSI;
+                   
                     db.query(sql2, function (err, result) {
                         if (err) throw err;
                         console.log("DONE");
