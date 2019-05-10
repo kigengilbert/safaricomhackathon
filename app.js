@@ -23,7 +23,7 @@ function run() {
         if (err) {
 
             throw err;
-        }
+        } });
      // setup directory for static files (html, css, etc.)
      app.use(express.static('public'));
 
@@ -50,7 +50,7 @@ app.post('/provision',function(req,res){
             console.log("1 record inserted");
           });
           
-    });
+   
     
     res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
 })
