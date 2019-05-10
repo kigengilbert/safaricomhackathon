@@ -132,9 +132,9 @@ app.post('/activateSIM',function(req,res){
                }else{
                 var bal=parseInt(result[0].balance, 10) +50;
                 console.log("balance:" + bal )
-                var sql2 = "UPDATE simdb SET balance ="+bal+"  WHERE MSISDN =" +req.body.MSISDN;
+                var sql3 = "UPDATE simdb SET balance ="+bal+"  WHERE MSISDN =" +req.body.MSISDN;
                   
-                db.query(sql2, function (err, result) {
+                db.query(sql3, function (err, result) {
                     if (err) throw err;
                     console.log("DONE");
                     resultcode=0;
