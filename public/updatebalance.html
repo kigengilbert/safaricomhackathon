@@ -97,15 +97,14 @@
       }
         $( "#update" ).click(function() {
           postData("https://safaricomhack.herokuapp.com/adjustAccountBalance", {MSISDN:$("#MSISDN").val(),Amount:$("#Amount").val()})
-        .then(data => console.log(
-            JSON.stringify(data.length)),
-          
-            ) // JSON-string from `response.json()` call
-
+          .then(data => printout(data))
         .catch(error => console.error(error));
         alert($("#MSISDN").val())
         });
-        
+        function printout(response) {
+                
+                alert(response.response_code);
+    }
       </script> 
 </body>
 
