@@ -69,9 +69,14 @@ app.post('/activateSIM',function(req,res){
              });
              
       */
-     console.log("IMSI: " +req.body.IMSI)
-    console.log("ICCID: " +req.body.ICCID)
-       
+    var sql="SELECT * FROM simdb WHERE (ICCID ="+ req.body.ICCID+ "AND IMSI ="+req.body.IMSI
+
+       console.log("IMSI: " +req.body.IMSI)
+        console.log("ICCID: " +req.body.ICCID)
+        db.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+          });
        res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
    })
     app.listen(server_port, () => console.log('Example app listening !'))
