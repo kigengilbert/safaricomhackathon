@@ -130,7 +130,7 @@ app.post('/activateSIM',function(req,res){
                        res.json({ response_code: 0  });
                      });
                }else{
-                   console.log("Balance: " +(parseInt(result[0].balance) +2))
+                   console.log("Balance: " +(result[0].balance +2))
                    res.json({ response_code: 2  });
                }
            
