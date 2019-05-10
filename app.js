@@ -4,7 +4,12 @@ function run() {
     // express server
     const express = require('express')
     const app = express()
-    
+    var cors = require('cors');
+    var bodyParser = require('body-parser')
+    app.use(cors());
+    app.use(bodyParser.urlencoded({ extended: true }))
+// parse application/json
+    app.use(bodyParser.json())
 
     // body parser middleware
   
@@ -18,6 +23,10 @@ function run() {
          res.sendFile('/public/index.html');
      });
      
+app.post('/provision',function(req,res){
+ 
+    res.json({ message: "yes...." + req.body.message + "  has been sent"  });
+})
       
     app.listen(server_port, () => console.log('Example app listening !'))
 }
