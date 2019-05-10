@@ -34,6 +34,7 @@ app.post('/provision',function(req,res){
     console.log("IMSI: " +req.body.IMSI)
     db.connect((err) => {
         if (err) {
+            
             throw err;
         }
         console.log('Connected to database');
