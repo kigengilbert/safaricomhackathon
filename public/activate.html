@@ -40,22 +40,22 @@
             <form>
                 <div class="form-group">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">MSISDN</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="2547XXXXXXXX">
+                  <input type="text" id="MSISDN" class="form-control" id="formGroupExampleInput" placeholder="2547XXXXXXXX">
                 </div>
                 <div class="form-group">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">ICCID</label>
-                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Serial number of the SIM card">
+                     <input type="text" id="ICCID" class="form-control" id="formGroupExampleInput" placeholder="Serial number of the SIM card">
                  </div>
             
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">IMSI</label>
-                     <input type="text" class="form-control" id="formGroupExampleInput" >
+                     <input type="text" id="IMSI" class="form-control" id="formGroupExampleInput" >
                 </div>
                 
               </form>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Create</a>
+            <a href="#" id="activate" class="btn btn-primary">Activate</a>
           </div>
         </div>
       </div>
@@ -81,7 +81,31 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+<script>
+        function postData(url = ``, data = {}) {
+        // Default options are marked with *
+          return fetch(url, {
+              method: "POST", // *GET, POST, PUT, DELETE, etc.
+              mode: "cors", // no-cors, cors, *same-origin
+              cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+              credentials: "same-origin", // include, *same-origin, omit
+              headers: {
+                  "Content-Type": "application/json",
+                  // "Content-Type": "application/x-www-form-urlencoded",
+              },
+              redirect: "follow", // manual, *follow, error
+              referrer: "no-referrer", // no-referrer, *client
+              body: JSON.stringify(data), // body data type must match "Content-Type" header
+          })
+          .then(response => response.json()); // parses JSON response into native Javascript objects 
+      }
+        $( "#activate" ).click(function() {
+          postData("https://safaricomhack.herokuapp.com/activateSIM", {MSISDN:$("#MSISDN").val(),ICCID:$("#ICCID").val(),IMSI:$("#IMSI").val()})
+        .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+        .catch(error => console.error(error));
+        alert($("#IMSI").val())
+        });
+      </script>
 </body>
 
 </html>

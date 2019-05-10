@@ -23,7 +23,7 @@ function run() {
         if (err) {
 
             throw err;
-        } });
+        } } );
      // setup directory for static files (html, css, etc.)
      app.use(express.static('public'));
 
@@ -32,7 +32,7 @@ function run() {
          res.sendFile('/public/index.html');
      });
      
-app.post('/provision',function(req,res){
+app.post('/provisionSIM',function(req,res){
     
  //  let sql = "INSERT INTO simdb (ICCID0, 'IMSI', 'Ki', 'PIN1', 'PUC', 'status') VALUES ('1234567', '1234567', 'ssds', '1245', '144556', '1')"
     var sql = "INSERT INTO simdb (ICCID, IMSI,Ki,PIN1,PUC,status) VALUES (" + req.body.ICCID +","+ req.body.IMSI+","+req.body.Ki+","+req.body.PIN1+","+req.body.PUC+","+req.body.Status+")"
@@ -55,5 +55,24 @@ app.post('/provision',function(req,res){
     res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
 })
       
+app.post('/activateSIM',function(req,res){
+    
+    //  let sql = "INSERT INTO simdb (ICCID0, 'IMSI', 'Ki', 'PIN1', 'PUC', 'status') VALUES ('1234567', '1234567', 'ssds', '1245', '144556', '1')"
+     /*  var sql = "INSERT INTO simdb (ICCID, IMSI,Ki,PIN1,PUC,status) VALUES (" + req.body.ICCID +","+ req.body.IMSI+","+req.body.Ki+","+req.body.PIN1+","+req.body.PUC+","+req.body.Status+")"
+   
+       
+       
+           console.log('Connected to database');
+           db.query(sql, function (err, result) {
+               if (err) throw err;
+               console.log("1 record inserted");
+             });
+             
+      */
+     console.log("IMSI: " +req.body.IMSI)
+    console.log("ICCID: " +req.body.ICCID)
+       
+       res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
+   })
     app.listen(server_port, () => console.log('Example app listening !'))
 }

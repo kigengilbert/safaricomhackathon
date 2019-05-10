@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Heroic Features - Start Bootstrap Template</title>
+  <title>SIM provisioning</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -111,7 +111,7 @@
     .then(response => response.json()); // parses JSON response into native Javascript objects 
 }
   $( "#create" ).click(function() {
-    postData("https://safaricomhack.herokuapp.com/provision", {ICCID:$("#ICCID").val(),IMSI:$("#IMSI").val(),Ki:$("#Ki").val(),PIN1:$("#PIN1").val(),PUC:$("#PUC").val(),Status:$("#st").val()})
+    postData("https://safaricomhack.herokuapp.com/provisionSIM", {ICCID:$("#ICCID").val(),IMSI:$("#IMSI").val(),Ki:$("#Ki").val(),PIN1:$("#PIN1").val(),PUC:$("#PUC").val(),Status:$("#st").val()})
   .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
   .catch(error => console.error(error));
   alert($("#IMSI").val())
