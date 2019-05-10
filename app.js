@@ -12,7 +12,7 @@ function run() {
          res.sendFile('/public/index.html');
      });
      
-     app.get('/api/provision', function (req, res) {
+     app.get('/provision', function (req, res) {
         res.sendFile('/public/provision.html');
     });   
     app.listen(server_port, () => console.log('Example app listening !'))
