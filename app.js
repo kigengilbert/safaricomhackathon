@@ -131,7 +131,6 @@ app.post('/activateSIM',function(req,res){
                      });
                }else{
                    res.json({ response_code: 2  });
-                   
                }
            
            }else{
