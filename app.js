@@ -95,7 +95,7 @@ app.post('/activateSIM',function(req,res){
    })
    app.post('/querySubscriberInfo',function(req,res){
     var resultcode=0;
-     var sql="SELECT * FROM simdb WHERE (MSISDN ="+ req.body.MSISD + ")"
+     var sql="SELECT * FROM simdb WHERE (MSISDN ="+ req.body.MSISDN + ")"
 
        
         db.query(sql, function (err, result) {
