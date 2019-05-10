@@ -121,7 +121,7 @@ app.post('/activateSIM',function(req,res){
            if(result.length==1){
                console.log(result[0].balance)
                
-                var bal=parseInt(result[0].balance, 10) +50;
+                var bal=parseInt(result[0].balance, 10) +req.body.Amount;
                 console.log("balance:" + bal )
                 var sql3 = "UPDATE simdb SET balance ="+bal+"  WHERE MSISDN =" +req.body.MSISDN;
                   
