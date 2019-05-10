@@ -73,7 +73,9 @@ app.post('/activateSIM',function(req,res){
                         if (err) throw err;
                         console.log("DONE");
                       });
-                }else{}
+                }else{
+                    
+                }
             
             }
           });
