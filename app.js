@@ -76,10 +76,13 @@ app.post('/activateSIM',function(req,res){
         db.query(sql, function (err, result) {
             if (err) throw err;
             if(result.length==1){
-                console.log(result[0].IMSI)
+                console.log(result)
+            
             }
           });
        res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
    })
+
+   
     app.listen(server_port, () => console.log('Example app listening !'))
 }
