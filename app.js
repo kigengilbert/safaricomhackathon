@@ -48,6 +48,7 @@ app.post('/provision',function(req,res){
             if (err) throw err;
             console.log("1 record inserted");
           });
+          db.close()
     });
     
     res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
