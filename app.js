@@ -19,10 +19,6 @@ function run() {
         password: '2YCGQhR4V9dfZ4L',
         database: 'safaricomhack'
     });
-    
- ]
-   
-   
      // setup directory for static files (html, css, etc.)
      app.use(express.static('public'));
 
