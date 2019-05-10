@@ -116,7 +116,7 @@ app.post('/activateSIM',function(req,res){
     var sql="SELECT * FROM simdb WHERE (MSISDN ="+ req.body.MSISDN + ")"
 
      
-       db.query(sql, function (err, parseIntresult) {
+       db.query(sql, function (err, result) {
            if (err) throw err;
            if(result.length==1){
                console.log(result[0].balance)
@@ -130,7 +130,7 @@ app.post('/activateSIM',function(req,res){
                        res.json({ response_code: 0  });
                      });
                }else{
-                   console.log("Balance: " + result[0].balance +2)
+                   console.log("Balance: " +result[0].balance)
                    res.json({ response_code: 2  });
                }
            
