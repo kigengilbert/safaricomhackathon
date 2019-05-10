@@ -29,8 +29,8 @@ function run() {
      
 app.post('/provision',function(req,res){
     
-   let sql = "INSERT INTO simdb ('ICCID', 'IMSI', 'Ki', 'PIN1', 'PUC', 'status') VALUES ('1234567', '1234567', 'ssds', '1245', '144556', '1')"
-    //var sql = "INSERT INTO simdb (ICCID, IMSI,Ki,PIN1,PUC,status) VALUES (" + req.body.ICCID +","+ req.body.IMSI+","+req.body.Ki+","+req.body.PIN1+","+req.body.PUC+","+req.body.Status+")"
+ //  let sql = "INSERT INTO simdb (ICCID0, 'IMSI', 'Ki', 'PIN1', 'PUC', 'status') VALUES ('1234567', '1234567', 'ssds', '1245', '144556', '1')"
+    var sql = "INSERT INTO simdb (ICCID, IMSI,Ki,PIN1,PUC,status) VALUES (" + req.body.ICCID +","+ req.body.IMSI+","+req.body.Ki+","+req.body.PIN1+","+req.body.PUC+","+req.body.Status+")"
     console.log("IMSI: " +req.body.IMSI)
     console.log("ICCID: " +req.body.ICCID)
     console.log("Ki: " +req.body.Ki)
