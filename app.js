@@ -20,12 +20,7 @@ function run() {
         database: 'safaricomhack'
     });
     
-    db.connect((err) => {
-        if (err) {
-            throw err;
-        }
-        console.log('Connected to database');
-    });
+ ]
    
    
      // setup directory for static files (html, css, etc.)
