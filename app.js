@@ -25,6 +25,7 @@ function run() {
      
 app.post('/provision',function(req,res){
  
+    console.log("IMSI: " +req.body.IMSI)
     res.json({ message: "yes...." + req.body.message + "  has been sent"  });
 })
       
