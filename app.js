@@ -56,9 +56,8 @@ app.post('/provisionSIM',function(req,res){
 })
       
 app.post('/activateSIM',function(req,res){
-    
-
-    var sql="SELECT * FROM simdb WHERE (ICCID ="+ req.body.ICCID+ " AND IMSI ="+req.body.IMSI+")"
+    var resultcode=0;
+     var sql="SELECT * FROM simdb WHERE (ICCID ="+ req.body.ICCID+ " AND IMSI ="+req.body.IMSI+")"
 
        console.log("IMSI: " +req.body.IMSI)
         console.log("ICCID: " +req.body.ICCID)
@@ -72,11 +71,14 @@ app.post('/activateSIM',function(req,res){
                     db.query(sql2, function (err, result) {
                         if (err) throw err;
                         console.log("DONE");
+                        resultcode=0;
                       });
                 }else{
-                    
+                    resultcode=2;
                 }
             
+            }else{
+                resultcode=1;
             }
           });
        res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
