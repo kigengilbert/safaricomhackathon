@@ -34,21 +34,31 @@ function run() {
      
 app.post('/provisionSIM',function(req,res){
     
- //  let sql = "INSERT INTO simdb (ICCID0, 'IMSI', 'Ki', 'PIN1', 'PUC', 'status') VALUES ('1234567', '1234567', 'ssds', '1245', '144556', '1')"
-    var sql = "INSERT INTO simdb (ICCID, IMSI,Ki,PIN1,PUC,status) VALUES (" + req.body.ICCID +","+ req.body.IMSI+","+req.body.Ki+","+req.body.PIN1+","+req.body.PUC+","+req.body.Status+")"
-    console.log("IMSI: " +req.body.IMSI)
-    console.log("ICCID: " +req.body.ICCID)
-    console.log("Ki: " +req.body.Ki)
-    console.log("PIN1: " +req.body.PIN1)
-    console.log("PUC: " +req.body.PUC)
-    console.log("status: " +req.body.Status)
+    var sql3="SELECT * FROM simdb WHERE (ICCID ="+ req.body.ICCID +")"
+    db.query(sql3, function (err, result) {
+        if (err) throw err;
+        if(result.length==1){
+            res.json({ response_code: 1   });
+        }else{
+
+            var sql = "INSERT INTO simdb (ICCID, IMSI,Ki,PIN1,PUC,status) VALUES (" + req.body.ICCID +","+ req.body.IMSI+","+req.body.Ki+","+req.body.PIN1+","+req.body.PUC+","+req.body.Status+")"
+            console.log("IMSI: " +req.body.IMSI)
+            console.log("ICCID: " +req.body.ICCID)
+            console.log("Ki: " +req.body.Ki)
+            console.log("PIN1: " +req.body.PIN1)
+            console.log("PUC: " +req.body.PUC)
+            console.log("status: " +req.body.Status)
+            
+            
+                console.log('Connected to database');
+                db.query(sql, function (err, result) {
+                    if (err) throw err;
+                    res.json({ response_code: 0  });
+                  });
+        }
+      });
+
     
-    
-        console.log('Connected to database');
-        db.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log("1 record inserted");
-          });
           
    
     
@@ -79,7 +89,7 @@ app.post('/activateSIM',function(req,res){
                 }
             
             }else{
-                res.json({ response_code: 0  });
+                res.json({ response_code: 0   });
             }
           });
        
