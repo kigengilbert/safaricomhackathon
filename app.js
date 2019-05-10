@@ -50,8 +50,7 @@ app.post('/provisionSIM',function(req,res){
             console.log("status: " +req.body.Status)
             
             
-                console.log('Connected to database');
-                db.query(sql, function (err, result) {
+                db.query(sql, function (err, result2) {
                     if (err) throw err;
                     res.json({ response_code: 0  });
                   });
