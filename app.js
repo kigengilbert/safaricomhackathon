@@ -12,7 +12,6 @@ function run() {
     var server_port = process.env.YOUR_PORT || process.env.PORT || 80
      // setup directory for static files (html, css, etc.)
      app.use(express.static('public'));
-     const prov = require("./api/provision");
 
      
      app.get('/', function (req, res) {
