@@ -43,12 +43,15 @@
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">MSISN</label>
                                      <input type="text"  id="MSISDN" class="form-control"  type="number" id="formGroupExampleInput" >
                                 </div>
-                            
+                                <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Amount</label>
+                                         <input type="text"  id="Amount" class="form-control"  type="number" id="formGroupExampleInput" >
+                                    </div> 
                                 
               </form>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Create</a>
+            <a href="#" id="update" class="btn btn-primary">Create</a>
           </div>
         </div>
       </div>
@@ -74,7 +77,36 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script>
+        function postData(url = ``, data = {}) {
+        // Default options are marked with *
+          return fetch(url, {
+              method: "POST", // *GET, POST, PUT, DELETE, etc.
+              mode: "cors", // no-cors, cors, *same-origin
+              cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+              credentials: "same-origin", // include, *same-origin, omit
+              headers: {
+                  "Content-Type": "application/json",
+                  // "Content-Type": "application/x-www-form-urlencoded",
+              },
+              redirect: "follow", // manual, *follow, error
+              referrer: "no-referrer", // no-referrer, *client
+              body: JSON.stringify(data), // body data type must match "Content-Type" header
+          })
+          .then(response => response.json()); // parses JSON response into native Javascript objects 
+      }
+        $( "#update" ).click(function() {
+          postData("https://safaricomhack.herokuapp.com/activateSIM", {MSISDN:$("#MSISDN").val(),Amount:$("#Amount").val()})
+        .then(data => console.log(
+            JSON.stringify(data)),
+            console.log("length " +data.length)
+            ) // JSON-string from `response.json()` call
 
+        .catch(error => console.error(error));
+        alert($("#IMSI").val())
+        });
+        
+      </script>
 </body>
 
 </html>
