@@ -120,16 +120,7 @@ app.post('/activateSIM',function(req,res){
            if (err) throw err;
            if(result.length==1){
                console.log(result[0].balance)
-               if(result[0].balance==0){
-                   var sql2 = "UPDATE simdb SET balance ="+req.body.Amount+"  WHERE MSISDN =" +req.body.MSISDN;
-                  
-                   db.query(sql2, function (err, result) {
-                       if (err) throw err;
-                       console.log("DONE");
-                       resultcode=0;
-                       res.json({ response_code: 0  });
-                     });
-               }else{
+               
                 var bal=parseInt(result[0].balance, 10) +50;
                 console.log("balance:" + bal )
                 var sql3 = "UPDATE simdb SET balance ="+bal+"  WHERE MSISDN =" +req.body.MSISDN;
@@ -141,7 +132,7 @@ app.post('/activateSIM',function(req,res){
                     res.json({ response_code: 0  });
                   });
                    res.json({ response_code: 1  });
-               }
+               
            
            }else{
                res.json({ response_code: 0   });
