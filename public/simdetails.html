@@ -74,7 +74,7 @@
               </form>
           </div>
           <div class="card-footer">
-            <a href="#" id= "chekbal" class="btn btn-primary">Query</a>
+            <a href="#" id="chekbal" class="btn btn-primary">Query</a>
           </div>
         </div>
       </div>
@@ -118,7 +118,7 @@
           })
           .then(response => response.json()); // parses JSON response into native Javascript objects 
       }
-        $( "#checkbal" ).click(function() {
+        $( "#chekbal" ).click(function() {
           postData("https://safaricomhack.herokuapp.com/querySubscriberInfo", {MSISDN:$("#MSISDN").val()})
         .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
         .catch(error => console.error(error));
