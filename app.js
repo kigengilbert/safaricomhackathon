@@ -101,15 +101,10 @@ app.post('/activateSIM',function(req,res){
         db.query(sql, function (err, result) {
             if (err) throw err;
             if(result.length==1){
-                console.log(result[0].status)
-                if(result[0].status==0){
-                      res.json(result);
-                }else{
-                    res.json(result);
-                }
+                res.json(result);
             
             }else{
-                res.json({ response_code: 0   });
+                res.json({   });
             }
           });
        
