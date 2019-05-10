@@ -57,18 +57,7 @@ app.post('/provisionSIM',function(req,res){
       
 app.post('/activateSIM',function(req,res){
     
-    //  let sql = "INSERT INTO simdb (ICCID0, 'IMSI', 'Ki', 'PIN1', 'PUC', 'status') VALUES ('1234567', '1234567', 'ssds', '1245', '144556', '1')"
-     /*  var sql = "INSERT INTO simdb (ICCID, IMSI,Ki,PIN1,PUC,status) VALUES (" + req.body.ICCID +","+ req.body.IMSI+","+req.body.Ki+","+req.body.PIN1+","+req.body.PUC+","+req.body.Status+")"
-   
-       
-       
-           console.log('Connected to database');
-           db.query(sql, function (err, result) {
-               if (err) throw err;
-               console.log("1 record inserted");
-             });
-             
-      */
+
     var sql="SELECT * FROM simdb WHERE (ICCID ="+ req.body.ICCID+ " AND IMSI ="+req.body.IMSI+")"
 
        console.log("IMSI: " +req.body.IMSI)
@@ -77,6 +66,13 @@ app.post('/activateSIM',function(req,res){
             if (err) throw err;
             if(result.length==1){
                 console.log(result[0].status)
+                if(result[0].status==0){
+                    var sql2 = "INSERT INTO simdb (status,MSISDN) VALUES ("+ req.body.MSISDN +",1)"
+                    db.query(sql2, function (err, result) {
+                        if (err) throw err;
+                        console.log("DONE");
+                      });
+                }else{}
             
             }
           });
