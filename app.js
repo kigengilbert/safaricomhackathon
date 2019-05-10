@@ -4,7 +4,7 @@ function run() {
     // express server
     const express = require('express')
     const app = express()
-
+    var server_port = process.env.YOUR_PORT || process.env.PORT || 80
      // setup directory for static files (html, css, etc.)
      app.use(express.static('public'));
 
@@ -13,5 +13,5 @@ function run() {
          res.sendFile('index.html');
      });
         
-    app.listen(3000, () => console.log('Example app listening on port 3000!'))
+    app.listen(server_port, () => console.log('Example app listening !'))
 }
