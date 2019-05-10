@@ -40,10 +40,17 @@ app.post('/provision',function(req,res){
     
     let sql = "INSERT INTO 'simdb' ('ICCID', 'IMSI', 'Ki', 'PIN1', 'PUC', 'status') VALUES ('1234567', '1234567', 'ssds', '1245', '144556', '1')"
     console.log("IMSI: " +req.body.IMSI)
-    /*db.query(sql, (err, result) => {
+    db.connect((err) => {
         if (err) {
-            return res.status(500).send(err);
-        }})*/
+            throw err;
+        }
+        console.log('Connected to database');
+        db.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("1 record inserted");
+          });
+    });
+    
     res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
 })
       
