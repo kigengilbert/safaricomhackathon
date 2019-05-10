@@ -43,7 +43,7 @@ app.post('/provision',function(req,res){
     db.query(sql, (err, result) => {
         if (err) {
             return res.status(500).send(err);
-        }
+        }})
     res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
 })
       
