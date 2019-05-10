@@ -76,7 +76,7 @@ app.post('/activateSIM',function(req,res){
         db.query(sql, function (err, result) {
             if (err) throw err;
             if(result.length==1){
-                console.log(result[0])
+                console.log(result[0].IMSI)
             }
           });
        res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
