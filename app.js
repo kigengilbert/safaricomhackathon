@@ -26,7 +26,7 @@ function run() {
 app.post('/provision',function(req,res){
  
     console.log("IMSI: " +req.body.IMSI)
-    res.json({ message: "yes...." + req.body.message + "  has been sent"  });
+    res.json({ message: "yes...." + req.body.ICCID + "  has been sent"  });
 })
       
     app.listen(server_port, () => console.log('Example app listening !'))
