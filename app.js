@@ -14,10 +14,10 @@ function run() {
     var server_port = process.env.YOUR_PORT || process.env.PORT || 80
     // mysql
     const db = mysql.createConnection ({
-        host: 'www.db4free.net',
-        user: 'gkigen',
-        password: '2YCGQhR4V9dfZ4L',
-        database: 'safaricomhack'
+        host: '**************',
+        user: '**************',
+        password: '**************',
+        database: '**************'
     });
     db.connect((err) => {
         if (err) {

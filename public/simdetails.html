@@ -110,7 +110,7 @@
         $( "#Check" ).click(function() {
           postData("https://safaricomhack.herokuapp.com/querySubscriberInfo", {MSISDN:$("#MSISDN").val()})
         .then(
-            data =>  printout(data)   ) // JSON-string from `response.json()` call
+            data =>  printout(data) ) // JSON-string from `response.json()` call
         .catch(error => console.error(error));
         alert($("#MSISDN").val()) 
         });
